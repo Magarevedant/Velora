@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     provider: 'github',
     options: {
       // Point this to your other Vercel function that handles the code
-      redirectTo: `https://velora-cyan-kappa.vercel.app/`,
+      redirectTo: `https://velora-cyan-kappa.vercel.app/api/callback`,
       skipBrowserRedirect: true // This gives us the URL instead of redirecting
     },
   });
