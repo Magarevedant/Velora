@@ -17,12 +17,7 @@ const supabase = createClient('https://unyomucsmtbxdqawvana.supabase.co', 'sb_pu
 
 // ---cut---
 async function login() {
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'github',
-    options: {
-    redirectTo: `http://localhost:8158/index.html`,
-  },
-  })
+  window.location.href = "https://velora-cyan-kappa.vercel.app/api/login"
 }
 const btn = document.getElementById("btn");
 btn.addEventListener("click",login)
