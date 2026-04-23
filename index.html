@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login button</title>
+  </head>
+  <body>
+    <button id="btn">
+      Login
+    </button>
+    
+
+    <script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+
+const supabase = createClient('https://unyomucsmtbxdqawvana.supabase.co', 'sb_publishable_buDnymqn0L6RVX0ORpTwKg_a2AaHjVz')
+
+// ---cut---
+async function login() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'github',
+    options: {
+    redirectTo: `http://localhost:8158/index.html`,
+  },
+  })
+}
+const btn = document.getElementById("btn");
+btn.addEventListener("click",login)
+
+
+// This checks if the user just returned from the login redirect
+async function checkUser() {
+  const { data: { session }, error } = await supabase.auth.getSession();
+  
+  if (session) {
+    console.log("Logged in!", session.user);
+    console.log("GitHub Token:", session.provider_token);
+
+    // This provider_token is what you'll use for the GitHub API!
+    
+    // Change UI to show 'Logged In'
+    document.getElementById("btn").innerText = `Hello, ${session.user.user_metadata.full_name}`;
+  }
+  
+}
+
+// Run this as soon as the page loads
+checkUser();
+
+    </script>
+  </body>
+</html>
