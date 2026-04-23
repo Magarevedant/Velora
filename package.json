@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@supabase/supabase-js": "^2.43.0",
-    "@supabase/ssr": "^0.10.2"
-    
+    "@supabase/ssr": "^0.10.2",
+    "cookie": "^0.6.0"
   }
 }
